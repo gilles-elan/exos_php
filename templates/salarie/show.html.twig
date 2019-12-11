@@ -11,6 +11,7 @@
         Embauché le: {{ salarie.dateEmbauche | date('d/m/Y') }}<br>
         entreprise: {{ salarie.entreprise.raisonSociale }}
     </p>
+    <a href="{{path('salarie_index')}}" title="retour" class="btn btn-primary">Retour</a>
 {% endblock %}
 
 {# {% block body %}

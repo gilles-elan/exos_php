@@ -1,0 +1,22 @@
+nav {
+    margin-bottom: 5em;
+}
+td {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+    padding: 0.5em 1em;
+}
+thead {
+    border-bottom: 1px solid black;
+    border-collapse: collapse;
+}
+th {
+    text-align: center;
+}
+table {
+    margin-bottom: 2em;
+}
+
+.cmini{
+    width: 50%;
+}

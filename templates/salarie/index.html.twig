@@ -3,7 +3,6 @@
 {% block title %}Liste des salariés{% endblock %}
 
 {% block contenu %}
-
     <table>
         <thead>
             <tr>
@@ -24,17 +23,13 @@
                     <td>{{ salarie.ville }}</td>
                     <td>{{ salarie.dateEmbauche | date('d/m/Y') }}</td>
                     <td>{{ salarie.entreprise.raisonSociale }}</td>
-                    <td><a href="{{ path('salarie_edit', {'id': salarie.id}) }}" title="">Modifier</a></td>
-                    <td><a href="{{ path('salarie_remove', {'id': salarie.id}) }}" title="">Supprimer</a></td>
+                    <td><a href="{{ path('salarie_edit', {'id': salarie.id}) }}" title="Modifier" class="btn btn-primary">Modifier</a></td>
+                    <td><a href="{{ path('salarie_remove', {'id': salarie.id}) }}" title="Supprimer" class="btn btn-danger">Supprimer</a></td>
                 </tr>
             {% endfor %}
         </tbody>
-        <tfooter>
-            <tr>
-                <td><a href="{{ path('salarie_add') }}" title="">Ajouter un salarie</a></td>
-            </tr>
-        </tfooter>
     </table>
+    <a href="{{ path('salarie_add') }}" title="ajouter" class="btn btn-secondary">Ajouter un salarie</a>
     {# Afficher la liste des noms avec lien cliquable pour aller vers leur page respective #}
     {# <ul>
     {% for salarie in salaries %}

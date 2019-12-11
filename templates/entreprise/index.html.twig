@@ -22,10 +22,13 @@
                     <td>{{ entreprise.adresse }}</td>
                     <td>{{ entreprise.cp }}</td>
                     <td>{{ entreprise.ville }}</td>
+                    <td><a href="{{ path('entreprise_edit', {'id': entreprise.id}) }}" title="" class="btn btn-primary">Modifier</a></td>
+                    <td><a href="{{ path('entreprise_remove', {'id': entreprise.id}) }}" title="" class="btn btn-danger">Supprimer</a></td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
+    <a href="{{ path('entreprise_add') }}" title="ajouter" class="btn btn-primary">Ajouter une entreprise</a>
     {# Afficher la liste des noms avec lien cliquable pour aller vers leur page respective #}
     {# <ul>
     {% for salarie in salaries %}
