@@ -1,20 +1,44 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SalarieController!{% endblock %}
+{% block title %}Liste des salariés{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block contenu %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp/www/gillesm/ExoSalaries/src/Controller/SalarieController.php'|file_link(0) }}">src/Controller/SalarieController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp/www/gillesm/ExoSalaries/templates/salarie/index.html.twig'|file_link(0) }}">templates/salarie/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <table>
+        <thead>
+            <tr>
+                <th>SALARIE</th>
+                <th>ADRESSE</th>
+                <th>CP</th>
+                <th>VILLE</th>
+                <th>DATE EMBAUCHE</th>
+                <th>ENTREPRISE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for salarie in salaries %}
+                <tr>
+                    <td><a href="{{ path('salarie_show', {'id':salarie.id}) }}" title="{{ salarie.prenom ~ ' ' ~ salarie.nom }}">{{ salarie.prenom ~ ' ' ~ salarie.nom }}</a></td>
+                    <td>{{ salarie.adresse }}</td>
+                    <td>{{ salarie.cp }}</td>
+                    <td>{{ salarie.ville }}</td>
+                    <td>{{ salarie.dateEmbauche | date('d/m/Y') }}</td>
+                    <td>{{ salarie.entreprise.raisonSociale }}</td>
+                    <td><a href="{{ path('salarie_edit', {'id': salarie.id}) }}" title="">Modifier</a></td>
+                    <td><a href="{{ path('salarie_remove', {'id': salarie.id}) }}" title="">Supprimer</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+        <tfooter>
+            <tr>
+                <td><a href="{{ path('salarie_add') }}" title="">Ajouter un salarie</a></td>
+            </tr>
+        </tfooter>
+    </table>
+    {# Afficher la liste des noms avec lien cliquable pour aller vers leur page respective #}
+    {# <ul>
+    {% for salarie in salaries %}
+        <li><a href="{{ path('salarie_show', {'id' : salarie.id}) }}">{{ salarie.prenom }} {{ salarie.nom }}</a></li>
+    {% endfor %}
+    </ul> #}
 {% endblock %}

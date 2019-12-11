@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block contenu %}
+
+    <h1>{{ entreprise.raisonSociale }}</h1>
+    <p>
+        adresse: {{ entreprise.adresse }}<br>
+        {{ entreprise.cp ~ ' ' ~ entreprise.ville }}<br>
+        <br>
+        SIRET: {{ entreprise.siret }}
+    </p>
+{% endblock %}
+
+{# {% block body %}
+    {{ dump(entreprise) }}
+{% endblock %} #}

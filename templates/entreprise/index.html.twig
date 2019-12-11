@@ -1,20 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EntrepriseController!{% endblock %}
+{% block title %}Liste des entreprises!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{% block contenu %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/wamp/www/gillesm/ExoSalaries/src/Controller/EntrepriseController.php'|file_link(0) }}">src/Controller/EntrepriseController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/wamp/www/gillesm/ExoSalaries/templates/entreprise/index.html.twig'|file_link(0) }}">templates/entreprise/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <table>
+        <thead>
+            <tr>
+                <th>RAISON SOCIALE</th>
+                <th>SIRET</th>
+                <th>ADRESSE</th>
+                <th>CP</th>
+                <th>VILLE</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entreprise in entreprises %}
+                <tr>
+                    <td><a href="{{ path('entreprise_show', {'id':entreprise.id}) }}" title="{{ entreprise.raisonSociale }}">{{ entreprise.raisonSociale }}</a></td>
+                    <td>{{ entreprise.siret }}</td>
+                    <td>{{ entreprise.adresse }}</td>
+                    <td>{{ entreprise.cp }}</td>
+                    <td>{{ entreprise.ville }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {# Afficher la liste des noms avec lien cliquable pour aller vers leur page respective #}
+    {# <ul>
+    {% for salarie in salaries %}
+        <li><a href="{{ path('salarie_show', {'id' : salarie.id}) }}">{{ salarie.prenom }} {{ salarie.nom }}</a></li>
+    {% endfor %}
+    </ul> #}
 {% endblock %}

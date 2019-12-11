@@ -22,7 +22,7 @@ class EntrepriseRepository extends ServiceEntityRepository
     public function getAll(){
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery(
-            'SELECT s FROM App\Entity\Entreprise e
+            'SELECT e FROM App\Entity\Entreprise e
              ORDER BY e.raisonSociale  ASC'
         );
         return $query->execute();
